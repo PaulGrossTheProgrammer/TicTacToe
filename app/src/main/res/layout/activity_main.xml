@@ -6,17 +6,103 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/buttonSquare1"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="268dp"
-        android:backgroundTint="@color/teal_200"
-        android:onClick="onClickSelectSquare2"
-        android:textSize="34sp"
+    <TextView
+        android:id="@+id/textSquare8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:width="80sp"
+        android:height="80sp"
+        android:background="@color/teal_200"
+        android:onClick="onClickSelectSquare"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textSquare5" />
+
+    <TextView
+        android:id="@+id/textSquare9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:width="80sp"
+        android:height="80sp"
+        android:background="@color/teal_200"
+        android:onClick="onClickSelectSquare"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        app:layout_constraintStart_toEndOf="@+id/textSquare8"
+        app:layout_constraintTop_toBottomOf="@+id/textSquare6" />
+
+    <TextView
+        android:id="@+id/textSquare7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:width="80sp"
+        android:height="80sp"
+        android:background="@color/teal_200"
+        android:onClick="onClickSelectSquare"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toStartOf="@+id/textSquare8"
+        app:layout_constraintTop_toBottomOf="@+id/textSquare4" />
+
+    <TextView
+        android:id="@+id/textSquare6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:width="80sp"
+        android:height="80sp"
+        android:background="@color/teal_200"
+        android:onClick="onClickSelectSquare"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        app:layout_constraintStart_toEndOf="@+id/textSquare5"
+        app:layout_constraintTop_toBottomOf="@+id/textSquare3" />
+
+    <TextView
+        android:id="@+id/textSquare5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:width="80sp"
+        android:height="80sp"
+        android:background="@color/teal_200"
+        android:onClick="onClickSelectSquare"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textSquare2" />
+
+    <TextView
+        android:id="@+id/textSquare4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:width="80sp"
+        android:height="80sp"
+        android:background="@color/teal_200"
+        android:onClick="onClickSelectSquare"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toStartOf="@+id/textSquare5"
+        app:layout_constraintTop_toBottomOf="@+id/textSquare1" />
 
     <TextView
         android:id="@+id/textTitle"
