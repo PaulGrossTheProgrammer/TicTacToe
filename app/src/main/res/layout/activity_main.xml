@@ -14,7 +14,7 @@
         android:width="80sp"
         android:height="80sp"
         android:background="@color/teal_200"
-        android:onClick="onClickSelectSquare"
+        android:onClick="onClickPlaySquare"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="60sp"
@@ -32,7 +32,7 @@
         android:width="80sp"
         android:height="80sp"
         android:background="@color/teal_200"
-        android:onClick="onClickSelectSquare"
+        android:onClick="onClickPlaySquare"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="60sp"
@@ -48,7 +48,7 @@
         android:width="80sp"
         android:height="80sp"
         android:background="@color/teal_200"
-        android:onClick="onClickSelectSquare"
+        android:onClick="onClickPlaySquare"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="60sp"
@@ -64,7 +64,7 @@
         android:width="80sp"
         android:height="80sp"
         android:background="@color/teal_200"
-        android:onClick="onClickSelectSquare"
+        android:onClick="onClickPlaySquare"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="60sp"
@@ -79,7 +79,7 @@
         android:width="80sp"
         android:height="80sp"
         android:background="@color/teal_200"
-        android:onClick="onClickSelectSquare"
+        android:onClick="onClickPlaySquare"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="60sp"
@@ -97,7 +97,7 @@
         android:width="80sp"
         android:height="80sp"
         android:background="@color/teal_200"
-        android:onClick="onClickSelectSquare"
+        android:onClick="onClickPlaySquare"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="60sp"
@@ -115,6 +115,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Player: X"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textSquare8" />
+
     <Button
         android:id="@+id/buttonExit"
         android:layout_width="wrap_content"
@@ -126,6 +139,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <Button
+        android:id="@+id/buttonNewGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="onClickNewGame"
+        android:text="New Game"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/textSquare2"
         android:layout_width="wrap_content"
@@ -134,7 +158,7 @@
         android:width="80sp"
         android:height="80sp"
         android:background="@color/teal_200"
-        android:onClick="onClickSelectSquare"
+        android:onClick="onClickPlaySquare"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="60sp"
@@ -152,7 +176,7 @@
         android:width="80sp"
         android:height="80sp"
         android:background="@color/teal_200"
-        android:onClick="onClickSelectSquare"
+        android:onClick="onClickPlaySquare"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="60sp"
@@ -168,7 +192,7 @@
         android:width="80sp"
         android:height="80sp"
         android:background="@color/teal_200"
-        android:onClick="onClickSelectSquare"
+        android:onClick="onClickPlaySquare"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="60sp"

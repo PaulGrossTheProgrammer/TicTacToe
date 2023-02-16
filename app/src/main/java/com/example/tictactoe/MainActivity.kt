@@ -1,19 +1,17 @@
 package com.example.tictactoe
 
-import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 
 class MainActivity : AppCompatActivity() {
 
-    // Game squares
+    // Game square vars
     private var square1: TextView? = null
     private var square2: TextView? = null
     private var square3: TextView? = null
@@ -27,6 +25,12 @@ class MainActivity : AppCompatActivity() {
     // Colours
     private var teal200: Int? = null
     private var purple200: Int? = null
+
+    // Game status vars
+    var currPlayer = "X"
+    var winner = ""
+
+    private var textPlayer: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,10 +50,14 @@ class MainActivity : AppCompatActivity() {
 
         teal200 = getColor(R.color.teal_200)
         purple200 = getColor(R.color.purple_200)
+
+        textPlayer = findViewById(R.id.textPlayer)
     }
 
     private fun isVictory(squareA: TextView?, squareB: TextView?, squareC: TextView?): Boolean {
-        if (squareA?.text?.isEmpty()!!) { return false }
+        if (squareA?.text?.isEmpty()!!) {
+            return false
+        }
 
         if (squareA?.text == squareB?.text && squareB?.text == squareC?.text) {
             return true
@@ -63,8 +71,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun highlightAnyVictory() {
-        // Reset all highlights
+    private fun resetSquaresColour() {
         resetColour(square1)
         resetColour(square2)
         resetColour(square3)
@@ -74,79 +81,132 @@ class MainActivity : AppCompatActivity() {
         resetColour(square7)
         resetColour(square8)
         resetColour(square9)
+    }
+
+    private fun resetSquaresSelection() {
+        square1?.text = ""
+        square2?.text = ""
+        square3?.text = ""
+        square4?.text = ""
+        square5?.text = ""
+        square6?.text = ""
+        square7?.text = ""
+        square8?.text = ""
+        square9?.text = ""
+    }
+
+    private fun highlightAnyVictory(): String {
+        resetSquaresColour()
 
         // Check each possible  line for victory
         if (isVictory(square1, square2, square3)) {
             square1?.setBackgroundColor(purple200!!)
             square2?.setBackgroundColor(purple200!!)
             square3?.setBackgroundColor(purple200!!)
+            return square1?.text.toString()
         }
         if (isVictory(square4, square5, square6)) {
             square4?.setBackgroundColor(purple200!!)
             square5?.setBackgroundColor(purple200!!)
             square6?.setBackgroundColor(purple200!!)
+            return square4?.text.toString()
         }
         if (isVictory(square7, square8, square9)) {
             square7?.setBackgroundColor(purple200!!)
             square8?.setBackgroundColor(purple200!!)
             square9?.setBackgroundColor(purple200!!)
+            return square7?.text.toString()
         }
         if (isVictory(square1, square4, square7)) {
             square1?.setBackgroundColor(purple200!!)
             square4?.setBackgroundColor(purple200!!)
             square7?.setBackgroundColor(purple200!!)
+            return square1?.text.toString()
         }
         if (isVictory(square2, square5, square8)) {
             square2?.setBackgroundColor(purple200!!)
             square5?.setBackgroundColor(purple200!!)
             square8?.setBackgroundColor(purple200!!)
+            return square2?.text.toString()
         }
         if (isVictory(square3, square6, square9)) {
             square3?.setBackgroundColor(purple200!!)
             square6?.setBackgroundColor(purple200!!)
             square9?.setBackgroundColor(purple200!!)
+            return square3?.text.toString()
         }
         if (isVictory(square1, square5, square9)) {
             square1?.setBackgroundColor(purple200!!)
             square5?.setBackgroundColor(purple200!!)
             square9?.setBackgroundColor(purple200!!)
+            return square1?.text.toString()
         }
         if (isVictory(square3, square5, square7)) {
             square3?.setBackgroundColor(purple200!!)
             square5?.setBackgroundColor(purple200!!)
             square7?.setBackgroundColor(purple200!!)
+            return square3?.text.toString()
         }
+
+        return ""
     }
 
-    fun onClickSelectSquare(view: View) {
+    fun onClickNewGame(view: View) {
+        // Ask user to confirm before exiting
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("New Game")
+        builder.setMessage("Are you sure you want to start again?")
+        builder.setPositiveButton("NEW") { _, _ ->
+            reset()
+        }
+        builder.setNegativeButton("Back") { _, _ -> }
+        builder.show()
+    }
+
+    fun reset() {
+        resetSquaresSelection()
+        resetSquaresColour()
+        currPlayer = "X"
+        winner = ""
+        displayCurrPlayer()
+    }
+
+    fun onClickPlaySquare(view: View) {
+        if (winner != "") { // No more moves after a win
+            return
+        }
+
         val square = (view as TextView)
-
-        if (square.text == "") {
-            square.text = "O"
-        } else if (square.text == "O") {
-            square.text = "X"
-        }  else if (square.text == "X") {
-            square.text = ""
+        if (square.text != "") { // Can't change a played square
+            return
         }
 
-        highlightAnyVictory()
-    }
-    fun onClickSelectSquare2(view: View) {
-        val button = (view as Button)
+        square.text = currPlayer
 
-        if (button.text == "") {
-            button.text = "O"
-        } else if (button.text == "O") {
-            button.text = "X"
-        }  else if (button.text == "X") {
-            button.text = ""
+        when (currPlayer) {
+            "O" -> {
+                currPlayer = "X"
+            }
+            "X" -> {
+                currPlayer = "O"
+            }
         }
 
-        highlightAnyVictory()
+        winner = highlightAnyVictory()
+        if (winner == "") {
+            displayCurrPlayer()
+        } else {
+            Toast.makeText(this, "WINNER!", Toast.LENGTH_SHORT).show()
+            displayWinner(winner)
+        }
     }
 
-    fun onClickDoSomething(view: View) {
-        Toast.makeText(this, "Do something...", Toast.LENGTH_SHORT).show()
+    private fun displayCurrPlayer() {
+        (textPlayer as TextView).text = "Player: $currPlayer"
+    }
+
+    private fun displayWinner(player: String) {
+        (textPlayer as TextView).text = "Winner: $player"
     }
 
     fun onClickExitApp(view: View) {
@@ -154,10 +214,10 @@ class MainActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Exit Application")
         builder.setMessage("Are you sure you want to to exit?")
-        builder.setPositiveButton("Yes") { dialog, which ->
+        builder.setPositiveButton("EXIT") { dialog, which ->
             finishAndRemoveTask()
         }
-        builder.setNegativeButton("No") { dialog, which ->}
+        builder.setNegativeButton("Back") { dialog, which -> }
         builder.show()
     }
 }
