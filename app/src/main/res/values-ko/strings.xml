@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">빙고 게임</string>
+    <string name="curr_player_message">플레이어: %1$s</string>
+</resources>

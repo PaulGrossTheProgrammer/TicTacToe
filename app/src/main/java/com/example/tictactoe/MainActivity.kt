@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         purple200 = getColor(R.color.purple_200)
 
         textPlayer = findViewById(R.id.textPlayer)
+        displayCurrPlayer()
     }
 
     private fun isVictory(squareA: TextView?, squareB: TextView?, squareC: TextView?): Boolean {
@@ -67,7 +68,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun resetColour(square: TextView?) {
         if ((square?.background as ColorDrawable).color != teal200) {
-            square?.setBackgroundColor(teal200!!)
+            square.setBackgroundColor(teal200!!)
         }
     }
 
@@ -151,18 +152,6 @@ class MainActivity : AppCompatActivity() {
         return ""
     }
 
-    fun onClickNewGame(view: View) {
-        // Ask user to confirm before exiting
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("New Game")
-        builder.setMessage("Are you sure you want to start again?")
-        builder.setPositiveButton("NEW") { _, _ ->
-            reset()
-        }
-        builder.setNegativeButton("Back") { _, _ -> }
-        builder.show()
-    }
-
     fun reset() {
         resetSquaresSelection()
         resetSquaresColour()
@@ -202,22 +191,35 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun displayCurrPlayer() {
-        (textPlayer as TextView).text = "Player: $currPlayer"
+        //(textPlayer as TextView).text = "Player: $currPlayer"
+        (textPlayer as TextView).text = String.format(getString(R.string.curr_player_message), currPlayer)
     }
 
-    private fun displayWinner(player: String) {
-        (textPlayer as TextView).text = "Winner: $player"
+    private fun displayWinner(winner: String) {
+        (textPlayer as TextView).text = "Winner: $winner"
+    }
+
+    fun onClickNewGame(view: View) {
+        // Ask user to confirm
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("New Game")
+        builder.setMessage("Are you sure you want to start again?")
+        builder.setPositiveButton("NEW") { _, _ ->
+            reset()
+        }
+        builder.setNegativeButton("Back") { _, _ -> }
+        builder.show()
     }
 
     fun onClickExitApp(view: View) {
-        // Ask user to confirm before exiting
+        // Ask user to confirm
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Exit Application")
         builder.setMessage("Are you sure you want to to exit?")
-        builder.setPositiveButton("EXIT") { dialog, which ->
+        builder.setPositiveButton("EXIT") { _, _ ->
             finishAndRemoveTask()
         }
-        builder.setNegativeButton("Back") { dialog, which -> }
+        builder.setNegativeButton("Back") { _, _ -> }
         builder.show()
     }
 }
