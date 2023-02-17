@@ -191,37 +191,34 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun displayCurrPlayer() {
-        //(textPlayer as TextView).text = "Player: $currPlayer"
-        //(textPlayer as TextView).text = String.format(getString(R.string.curr_player_message), currPlayer)
         (textPlayer as TextView).text = String.format(getString(R.string.curr_player_message), currPlayer)
     }
 
     private fun displayWinner(winner: String) {
-        //(textPlayer as TextView).text = "Winner: $winner"
         (textPlayer as TextView).text = String.format(getString(R.string.winner_message), winner)
     }
 
     fun onClickNewGame(view: View) {
         // Ask user to confirm
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("New Game")
-        builder.setMessage("Are you sure you want to start again?")
-        builder.setPositiveButton("NEW") { _, _ ->
+        builder.setTitle(getString(R.string.new_game_title_message))
+        builder.setMessage(getString(R.string.new_game_confirm_message))
+        builder.setPositiveButton(getString(R.string.new_button_message)) { _, _ ->
             reset()
         }
-        builder.setNegativeButton("Back") { _, _ -> }
+        builder.setNegativeButton(getString(R.string.go_back_message)) { _, _ -> }
         builder.show()
     }
 
     fun onClickExitApp(view: View) {
         // Ask user to confirm
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Exit Application")
-        builder.setMessage("Are you sure you want to to exit?")
-        builder.setPositiveButton("EXIT") { _, _ ->
+        builder.setTitle(getString(R.string.exit_title_message))
+        builder.setMessage(getString(R.string.exit_confirm_message))
+        builder.setPositiveButton(getString(R.string.exit_message)) { _, _ ->
             finishAndRemoveTask()
         }
-        builder.setNegativeButton("Back") { _, _ -> }
+        builder.setNegativeButton(getString(R.string.go_back_message)) { _, _ -> }
         builder.show()
     }
 }
