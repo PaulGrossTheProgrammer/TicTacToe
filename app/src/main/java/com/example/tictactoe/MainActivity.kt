@@ -152,7 +152,7 @@ class MainActivity : AppCompatActivity() {
         return ""
     }
 
-    fun reset() {
+    private fun reset() {
         resetSquaresSelection()
         resetSquaresColour()
         currPlayer = "X"
@@ -192,11 +192,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun displayCurrPlayer() {
         //(textPlayer as TextView).text = "Player: $currPlayer"
+        //(textPlayer as TextView).text = String.format(getString(R.string.curr_player_message), currPlayer)
         (textPlayer as TextView).text = String.format(getString(R.string.curr_player_message), currPlayer)
     }
 
     private fun displayWinner(winner: String) {
-        (textPlayer as TextView).text = "Winner: $winner"
+        //(textPlayer as TextView).text = "Winner: $winner"
+        (textPlayer as TextView).text = String.format(getString(R.string.winner_message), winner)
     }
 
     fun onClickNewGame(view: View) {

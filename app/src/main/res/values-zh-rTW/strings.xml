@@ -2,4 +2,6 @@
 <resources>
     <string name="app_name">TicTacToe</string>
     <string name="curr_player_message">播放器: %1$s</string>
+    <string name="new_game_message">新游戏</string>
+    <string name="winner_message">優勝者: %1$s</string>
 </resources>

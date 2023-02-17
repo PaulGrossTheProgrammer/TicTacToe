@@ -109,7 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Tic Tac Toe"
+        android:text="@string/app_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -120,7 +120,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Player: X"
+        android:text="@string/curr_player_message"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="60sp"
         android:textStyle="bold"
@@ -146,7 +146,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         android:onClick="onClickNewGame"
-        android:text="New Game"
+        android:text="@string/new_game_message"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
