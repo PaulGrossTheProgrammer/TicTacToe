@@ -27,8 +27,8 @@ class MainActivity : AppCompatActivity() {
     private var purple200: Int? = null
 
     // Game status vars
-    var currPlayer = "X"
-    var winner = ""
+    private var currPlayer = "X"
+    private var winner = ""
 
     private var textPlayer: TextView? = null
 
@@ -185,7 +185,7 @@ class MainActivity : AppCompatActivity() {
         if (winner == "") {
             displayCurrPlayer()
         } else {
-            Toast.makeText(this, "WINNER!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, String.format(getString(R.string.winner_message), winner), Toast.LENGTH_SHORT).show()
             displayWinner(winner)
         }
     }
